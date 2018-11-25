@@ -1,0 +1,112 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+void display();
+void percentage_Votes();
+int sum_Votes();
+string winner();
+
+const int num_Of_Canidates = 5;		
+
+string candidates[num_Of_Canidates];
+int votesReceived[num_Of_Canidates];
+double percentageOfTotalVotes[num_Of_Canidates];
+
+int main()
+{
+	cout << setprecision(2) << showpoint << fixed;
+	
+	int x = 0;
+
+	cout << "Enter the last names of the 5 canidates followed by the amount of votes they received: ";
+	while (x < num_Of_Canidates)
+	{
+		cin >> candidates[x];
+		cin >> votesReceived[x];
+		x++;
+	}
+
+	percentage_Votes();
+
+	cout << endl;
+	cout << endl; 
+
+	display();
+
+    return 0; 
+}
+
+
+int sum_Votes()
+{
+	int vote_Sum = 0;
+
+	for (int i = 0; i < num_Of_Canidates; i++)
+	{
+		vote_Sum += votesReceived[i];
+	}
+
+	return vote_Sum;
+}
+
+void percentage_Votes()
+{
+	double sum = sum_Votes();
+
+	for (int i = 0; i < num_Of_Canidates; i++)
+	{
+		percentageOfTotalVotes[i] = votesReceived[i] / sum;
+		percentageOfTotalVotes[i] = percentageOfTotalVotes[i] * 100;
+	}
+
+}
+string winner()
+{
+	string winner = "";
+	int store_i = 0;
+	int largest_AmountOfVotes = 0;
+
+	for (int i = 0; i < num_Of_Canidates; i++)
+	{
+		if (largest_AmountOfVotes < votesReceived[i])
+		{
+			largest_AmountOfVotes = votesReceived[i];
+			store_i = i;
+		}
+	}
+    winner = candidates[store_i];
+	return winner; 
+}
+
+void display()
+{
+
+	cout << setfill(' ') << left << setw(10) << "Candidate";
+	cout << " | ";
+	cout << setfill(' ') << left << setw(20) << " Votes Received ";
+	cout << " | ";
+	cout << setfill(' ') << left << setw(10) << " % of Total Votes ";
+
+	for (int x = 0; x < num_Of_Canidates; x++)
+	{
+		cout << endl;
+
+		cout << endl;
+		cout << setfill(' ') << left << setw(10) << candidates[x];
+		cout << setfill(' ') << left << setw(12) << " | ";
+		cout << setfill(' ') << left << setw(11) << votesReceived[x];
+		cout << setfill(' ') << left << setw(10) << " | ";
+		cout << setfill(' ') << left << setw(10) << percentageOfTotalVotes[x];
+		cout << endl;
+
+	}
+	cout << endl;
+	cout << "Total Overall Votes: " << sum_Votes();
+	cout << endl;
+	cout << "The Winner of the Election is " << winner();
+    cout << endl;
+
+}
