@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void display();
+//void display();
 void percentage_Votes();
 int sum_Votes();
 string winner();
@@ -31,10 +31,35 @@ int main()
 
 	percentage_Votes();
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	cout << endl;
 	cout << endl; 
 
-	display();
+	cout << endl;
+	cout << endl; 
+    	cout << "Candidate\s+Votes Received\s+% of Total Votes";
+   	cout << " Candidate Votes Received % of Total Votes";
+	cout << "Candidate Votes Received % of Total Votes";
+
+    	for (int x = 0; x < num_Of_Canidates; x++)
+	{
+		//cout << " Candidate Votes Received % of Total Votes";
+		cout << endl;
+		cout <<  candidates[x] << " "
+			<< votesReceived[x] << " "
+			<<  percentageOfTotalVotes[x];
+		cout << endl;
+	}
+
+	cout << endl;
+	cout << "Total Overall Votes: " << sum_Votes();
+	cout << endl;
+	cout << "The Winner of the Election is " << winner();
+	cout << endl;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//display();
 
     return 0; 
 }
@@ -80,7 +105,7 @@ string winner()
     winner = candidates[store_i];
 	return winner; 
 }
-
+/*
 void display()
 {
 
@@ -110,3 +135,4 @@ void display()
     cout << endl;
 
 }
+*/
