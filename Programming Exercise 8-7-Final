@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////Programming Exercise 8-7///////////////////////////////
 /*
 				Write a program that allows the user to enter the last names
 				of five candidates in a local election and the number of votes
@@ -20,7 +20,7 @@
 				Description
 				Searched your code for a specific pattern:
 
-				cout << "Candidate\s+Votes Received\s+% of Total Votes"
+				-	cout << "Candidate\s+Votes Received\s+% of Total Votes"
 
 	Check #2:
 				Code Pattern - Complete
@@ -29,7 +29,7 @@
 				Description
 				Searched your code for a specific pattern:
 
-				cout << "The Winner of the Election is "
+				-	cout << "The Winner of the Election is "
 
 	Check #3:
 				Successful Output -- this was the easy part.
