@@ -1,0 +1,182 @@
+/*
+
+
+
+
+
+
+
+*/
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+
+using namespace std;
+
+void position(int rand_arr[], int size);
+void reverse(int rand_arr[], int size);
+int average(int rand_arr[], int size);
+string search(int rand_arr[], int size, int search_num);
+
+
+int main()
+{
+	const int size = 15;
+	int rand_int_arr[size];
+	int rand_int;
+	char request;
+	int search_int;
+	
+	
+	cout << " The following is an Array of random integers: " << endl;
+	// print array
+	for (int x = 0; x < size; x++)
+	{
+		rand_int = rand() % 5 + 15;
+
+		rand_int_arr[x] = rand_int;
+
+		cout << "[ " << rand_int_arr[x] << " ]  ";
+	}
+
+	cout << endl;
+	cout << endl;
+
+	cout << " [P]osition, [R]everse, [A]verage, [S]earch, [Q]uit " << endl;
+	cout << endl << "Please select an option: ";
+
+	
+
+	cin >> request;
+
+
+	while (request != 'q' && request != 'Q')
+	{
+		switch (request)
+		{
+		case 'q':
+		case 'Q':	cout << "The program will now exit.";
+			return 0;
+			break;
+		case 'P':
+		case 'p':	cout << endl; 
+					position(rand_int_arr, size);
+				  break;
+		case 'r':
+		case 'R':	cout << endl;
+					reverse(rand_int_arr, size);
+			break;
+		case 'a':
+		case 'A':	cout << "The average of the Array is " << average(rand_int_arr, size) << endl;
+			break;
+		case 's':
+		case 'S':	cout << "Enter an integer number: ";
+					cin >> search_int;
+					cout << search(rand_int_arr, size, search_int);
+					cout << endl;
+			break;
+		default:	cout << "Wrong input. Try again..." << endl;
+			break;
+		}
+		cout << " [P]osition, [R]everse, [A]verage, [S]earch, [Q]uit " << endl;
+		cout << endl << "Please select an option: ";
+		cin >> request;
+
+	} 
+
+	cout << endl;
+
+	return 0;
+}
+
+void position(int rand_arr[], int size)
+{
+	cout << "Will print out the Elements with their position bellow." << endl;
+	cout << "Elem : ";
+	for (int i = 0; i < size; i++)
+	{
+		cout << "[ " << rand_arr[i] << " ] ";
+	}
+
+	cout << endl;
+	cout << "Posi : ";
+	for (int i = 0; i < size; i++)
+	{
+		cout << "[ " << i << " ] ";
+	}
+	cout << endl;
+	cout << endl;
+}
+
+void reverse(int rand_arr[], int size)
+{
+	cout << endl;
+
+	cout << "The Array in reverse form is displayed bellow: " << endl;
+	cout << endl;
+
+	for (int i = size-1; i >= 0; i--)
+	{
+		cout << "[ " << rand_arr[i] << " ]  ";
+	}
+	cout << endl;
+	cout << endl;
+}
+
+int average(int rand_arr[], int size)
+{
+	int average_of_arr;
+	int sum = 0;
+
+
+	for (int i = 0; i < size; i++)
+	{
+		sum += rand_arr[i];
+
+	}
+
+	average_of_arr = sum / size;
+
+
+	return average_of_arr;
+
+}
+
+string search(int rand_arr[], int size, int search_num)
+{
+	int store_index[15];
+	int count = 0;
+
+	
+	string num_found = " ";
+
+	// is number in the list?
+	for (int i = 0; i < size; i++)
+	{
+		if (search_num == rand_arr[i])
+		{
+			store_index[count] = i;
+			count++;
+		}
+		
+	}
+
+	if(  count != 0 )
+	{
+		if (count == 1)
+			num_found += "The integer was found at index: ";
+		else
+			num_found += "The integer was found at these indexes: ";
+	
+		for (int z = 0; z < count; z++)
+			{
+				num_found += to_string(store_index[z]) + " ";
+			}
+	}
+	return num_found; 
+	
+}
